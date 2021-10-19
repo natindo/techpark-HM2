@@ -1,27 +1,29 @@
-#include"utils.h"
+#include "utils.h"
 
 struct masterRecord{int Number; char Name[20]; char Surname[20]; char addres[30]; char TelNumber[15]; double indebtedness; double credit_limit; double cash_payments};
-	typedef  struct  masterRecord Data;
+	typedef struct masterRecord Data;
 	int main(void){
 		int choice = 0;	
-		void masterWrite(FILE *ofPTR, Data Client)  ,transactionWrite(FILE *ofPTR, Data transfer), blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer)                    ;
-		FILE *Ptr, *Ptr_2 , *blackrecord;
-	  	Data	 client_data,  transfer;
-	printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n" );
-			while (scanf("%d", &choice ) != -1)  {
-				switch(choice)  {
+		void masterWrite(FILE *ofPTR, Data Client);
+		void transactionWrite(FILE *ofPTR, Data transfer);
+		void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer);
+		FILE *Ptr, *Ptr_2, *blackrecord;
+	  	Data client_data, transfer;
+		printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n");
+			while (scanf("%d", &choice) != -1){
+				switch(choice){
 				case 1:
-					Ptr = fopen("record.dat", "r+" );
-					if(Ptr == NULL ){
+					Ptr = fopen("record.dat", "r+");
+					if(Ptr == NULL){
 						puts("Not acess");	
 					}
 					else{
-						masterWrite(  Ptr , client_data);	
+						masterWrite(Ptr, client_data);	
 						fclose(Ptr);
 					}
 					break;
 				case 2:
-					Ptr = fopen(filename, "r+");
+					Ptr = fopen("output.txt", "r+");
 					if(Ptr == NULL){
 						puts("Not acess");	
 					}
@@ -38,8 +40,8 @@ struct masterRecord{int Number; char Name[20]; char Surname[20]; char addres[30]
 						puts("exit");
 					}
 					else{
-						blackRecord( Ptr, Ptr_2, blackrecord, client_data, transfer);
-						free(Ptr)
+						blackRecord(Ptr, Ptr_2, blackrecord, client_data, transfer);
+						free(Ptr);
 						fclose(Ptr);
 						fclose(Ptr_2);	
 						fclose(blackrecord);
@@ -84,7 +86,7 @@ struct masterRecord{int Number; char Name[20]; char Surname[20]; char addres[30]
 			"1 Number account: ",
 			"2 Client cash payments: ");
 		while(scanf("%d %lf", &transfer.Number, &transfer.cash_payments) != -1){
-				fprintf(filename, "%-3d%-6.2f\n", transfer.Number, transfer.cash_payments);
+				fprintf("output.txt", "%-3d%-6.2f\n", transfer.Number, transfer.cash_payments);
 				printf("%s\n%s\n",  
 						"1 Number account:",
 						"2 Client cash payments: "

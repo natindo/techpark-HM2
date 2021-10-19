@@ -1,9 +1,9 @@
-#define UTILS_H
 #ifndef UTILS_H
+#define UTILS_H
 
-#define filename "transaction.dat";
+#include <stdio.h>
+#include <stdlib.h>
 
-// This comment is very useful
-printf("This message is very useful too")
+//#define filename "transaction.dat";
 
 #endif //UTILS_H
